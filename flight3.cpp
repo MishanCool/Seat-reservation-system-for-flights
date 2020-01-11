@@ -1,11 +1,13 @@
 #include <iostream>
 #include <fstream>
+#include<string.h>
 
 using namespace std;
 int main()
 {
     ifstream inFile;
     string statement[100];
+
     // open the file stream
     inFile.open(".\\Flights.txt");
 
@@ -35,3 +37,9 @@ int main()
     // close the file stream
     inFile.close();
 }
+
+class flight {
+    flight(){
+        cout<< "dddd";
+    }
+};
