@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include<string.h>
+#include <bits/stdc++.h> 
 
 using namespace std;
 
@@ -22,23 +23,23 @@ class flight {
 };
 
 
-// void removeDupWord(string str) 
-// { 
-//    string word = ""; 
-//    for (auto x : str) 
-//    { 
-//        if (x == ' ') 
-//        { 
-//            cout << word << endl; 
-//            word = ""; 
-//        } 
-//        else
-//        { 
-//            word = word + x; 
-//        } 
-//    }  
-//    cout << word << endl; 
-// } 
+void splitString(string str) 
+{ 
+    // Used to split string around spaces. 
+    istringstream ss(str); 
+  
+    // Traverse through all words 
+    do { 
+        // Read a word 
+        string word; 
+        ss >> word; 
+  
+        // Print the read word 
+        cout << word << endl; 
+  
+        // While there is more to read 
+    } while (ss); 
+} 
 
 
 int main()
@@ -73,9 +74,10 @@ int main()
         count1++;
 
     }
-     flight *flightOb[numberofplane];
+
+    flight *flightOb[numberofplane];  // Object array
     int i=0;
-    cout << "count1 is :" << count1 << endl;
+    //cout << "count1 is :" << count1 << endl;
     
     //  flight flightOb1[numberofplane];
     int j=0;
@@ -100,8 +102,8 @@ int main()
         cout << flightOb[i]->arri_airport << endl;
 
         while(statement[j]!=""){
-            // string str = statement[i]; 
-            // removeDupWord(str);
+            string str = statement[j]; 
+            splitString(str);
             // int row=
             // classs
             // 
