@@ -86,36 +86,18 @@ int main()
         string f_dep=statement[j+2];      //  departure airport code
         string f_arri=statement[j+3];     //  arrival airport code
         j=j+4;
-        cout << "c****** :" << fid << endl;
+        //cout << "c****** :" << fid << endl;
         // cout << "c****** :" << f_datetime << endl;
         // cout << "c****** :" << f_dep << endl;
         // cout << "c****** :" << f_arri << endl;
-        
-        //i=i+4;
 
         //flight flightOb1(fid, f_datetime, f_dep, f_arri);
         flightOb[i] =new  flight(fid, f_datetime, f_dep, f_arri);
-        //cout << "c****** :" << f_arri << endl;
 
-        cout << "c###### :" << flightOb[i]->flight_num << endl;
-        // cout << "c###### :" << flightOb[i].dep_datetime << endl;
-        // cout << "c###### :" << flightOb[i].dep_airport << endl;
-        // cout << "c###### :" << flightOb[i].arri_airport << endl;
-
-        // while(statement[i]!=""){
-        //     // split
-        //     // int row=
-        //     // classs
-        //     // 
-        //     i++;
-        // }
-        // cout<< flightOb[i].flight_num<<endl;
-        // cout<< flightOb[i].dep_datetime<<endl;
-        // cout<< flightOb[i].dep_airport<<endl;
-        // cout<< flightOb[i].arri_airport<<endl;
-        //cout << "c****** :" << flightOb[i].arri_airport << endl;
-        // j++;
-
+        cout << flightOb[i]->flight_num << endl;
+        cout << flightOb[i]->dep_datetime << endl;
+        cout << flightOb[i]->dep_airport << endl;
+        cout << flightOb[i]->arri_airport << endl;
 
         while(statement[j]!=""){
             // string str = statement[i]; 
@@ -130,11 +112,7 @@ int main()
 
     }
    
-    
 
     // close the file stream
     inFile.close();
 }
-
-
-
