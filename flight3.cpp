@@ -5,6 +5,9 @@
 
 using namespace std;
 
+// int x;
+string word[100];
+
 class flight {
     public: 
 
@@ -23,27 +26,34 @@ class flight {
 };
 
 
-void splitString(string str) 
-{ 
-    // Used to split string around spaces. 
-    istringstream ss(str); 
-  
-    // Traverse through all words 
-    do { 
-        // Read a word 
-        string word; 
-        ss >> word; 
-  
-        // Print the read word 
-        cout << word << endl; 
-  
-        // While there is more to read 
-    } while (ss); 
-} 
+// void splitString(string str) 
+// { 
+//     // Used to split string around spaces. 
+//     istringstream ss(str);
 
+//     int k=0; 
+  
+//     // Traverse through all words 
+//     do { 
+//         // Read a word 
+//         //string word; 
+//         ss >> word[k];
 
-int main()
-{
+//          // Print the read word 
+//         cout << word[k] << endl; 
+//         if(word[k]==""){
+//             k++;
+//             // cout<<"fffff"<<endl;
+//             break;
+//         }
+//         k++; 
+
+//         // While there is more to read 
+//     } while (ss); 
+// } 
+
+void flightDetails(){
+
     ifstream inFile;
     string statement[100];
      
@@ -103,8 +113,29 @@ int main()
 
         while(statement[j]!=""){
             string str = statement[j]; 
-            splitString(str);
-            // int row=
+            // splitString(str);
+            // Used to split string around spaces. 
+            istringstream ss(str);
+
+            int k=0; 
+        
+            // Traverse through all words 
+            do { 
+                // Read a word 
+                //string word; 
+                ss >> word[k];
+
+                // Print the read word 
+                //cout << word[k] << endl; 
+                if(word[k]==""){
+                    k++;
+                    // cout<<"fffff"<<endl;
+                    break;
+                }
+                k++; 
+
+                // While there is more to read 
+            } while (ss); 
             // classs
             // 
             j++;
@@ -113,8 +144,38 @@ int main()
        j++;
 
     }
-   
-
     // close the file stream
     inFile.close();
+
+}
+
+
+int main()
+{
+    
+    while(1){
+
+        int x;
+
+        cout << "1. Flight details" << endl;
+        cout << "Enter your option :"; 
+        cin >> x;
+
+        switch (x){
+            case 1 : flightDetails();
+                     break;
+            case 2 :
+                cout << "Well done" << endl;
+                break;
+            case 3 :
+                cout << "You passed" << endl;
+                break;
+            case 4 :
+                cout << "Better try again" << endl;
+                break;
+            default :
+                cout << "Invalid grade" << endl;
+        }
+    }
+   
 }
