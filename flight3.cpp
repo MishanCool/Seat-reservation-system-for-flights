@@ -160,6 +160,7 @@ int main()
         int x;
 
         cout << "1. Flight details" << endl;
+        cout << "4. Exit " << endl;
         cout << "Enter your option :"; 
         cin >> x;
 
@@ -167,16 +168,15 @@ int main()
             case 1 : flightDetails();
                      break;
             case 2 :
-                cout << "Well done" << endl;
-                break;
+                    cout << "Well done" << endl;
+                    break;
             case 3 :
-                cout << "You passed" << endl;
-                break;
-            case 4 :
-                cout << "Better try again" << endl;
-                break;
+                    cout << "You passed" << endl;
+                    break;
+            case 4 :exit(-1);
+                    break;
             default :
-                cout << "Invalid grade" << endl;
+                    cout << "Invalid grade" << endl;
         }
     }
    
