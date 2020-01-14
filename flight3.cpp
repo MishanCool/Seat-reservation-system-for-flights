@@ -106,10 +106,10 @@ void flightDetails(){
         //flight flightOb1(fid, f_datetime, f_dep, f_arri);
         flightOb[i] =new  flight(fid, f_datetime, f_dep, f_arri);
 
-        cout << flightOb[i]->flight_num << endl;
-        cout << flightOb[i]->dep_datetime << endl;
-        cout << flightOb[i]->dep_airport << endl;
-        cout << flightOb[i]->arri_airport << endl;
+        cout <<"Flight Number :" << flightOb[i]->flight_num << endl;
+        cout <<"Departure Date :" << flightOb[i]->dep_datetime << endl;
+        cout <<"Departure Airport Code :" << flightOb[i]->dep_airport << endl;
+        cout << "Arrival Airport Code :" << flightOb[i]->arri_airport << endl;
 
         while(statement[j]!=""){
             string str = statement[j]; 
@@ -126,7 +126,7 @@ void flightDetails(){
                 ss >> word[k];
 
                 // Print the read word 
-                //cout << word[k] << endl; 
+                cout << word[k] << "\t"; 
                 if(word[k]==""){
                     k++;
                     // cout<<"fffff"<<endl;
@@ -138,10 +138,12 @@ void flightDetails(){
             } while (ss); 
             // classs
             // 
+            cout<<endl;
             j++;
         }
-
+    
        j++;
+       cout<<"\n\n\n\n";
 
     }
     // close the file stream
