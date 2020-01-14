@@ -3,6 +3,7 @@
 #include<string.h>
 
 using namespace std;
+
 class flight {
     public: 
 
@@ -20,10 +21,31 @@ class flight {
     }
 };
 
+
+// void removeDupWord(string str) 
+// { 
+//    string word = ""; 
+//    for (auto x : str) 
+//    { 
+//        if (x == ' ') 
+//        { 
+//            cout << word << endl; 
+//            word = ""; 
+//        } 
+//        else
+//        { 
+//            word = word + x; 
+//        } 
+//    }  
+//    cout << word << endl; 
+// } 
+
+
 int main()
 {
     ifstream inFile;
     string statement[100];
+     
 
     // open the file stream
     inFile.open(".\\Flights.txt");
@@ -51,22 +73,35 @@ int main()
         count1++;
 
     }
-
+     flight *flightOb[numberofplane];
     int i=0;
     cout << "count1 is :" << count1 << endl;
-
+    
+    //  flight flightOb1[numberofplane];
+    int j=0;
     for(int i = 0 ; i<numberofplane ; i++){
         //cout << "value :" << statement[i] << endl;
-        string fid=statement[i];          //  flight number
-        string f_datetime=statement[i+1];      //  departure date and time
-        string f_dep=statement[i+2];       //  departure airport code
-        string f_arri=statement[i+3];      //  arrival airport code
+        string fid=statement[j];          //  flight number
+        string f_datetime=statement[j+1]; //  departure date and time
+        string f_dep=statement[j+2];      //  departure airport code
+        string f_arri=statement[j+3];     //  arrival airport code
+        j=j+4;
+        cout << "c****** :" << fid << endl;
+        // cout << "c****** :" << f_datetime << endl;
+        // cout << "c****** :" << f_dep << endl;
+        // cout << "c****** :" << f_arri << endl;
         
-        i=i+4;
+        //i=i+4;
 
-        flight flightOb1(fid, f_datetime, f_dep, f_arri);
-        //flightOb1.flight(fid, f_datetime, f_dep, f_arri);
-        //flightOb1.;
+        //flight flightOb1(fid, f_datetime, f_dep, f_arri);
+        flightOb[i] =new  flight(fid, f_datetime, f_dep, f_arri);
+        //cout << "c****** :" << f_arri << endl;
+
+        cout << "c###### :" << flightOb[i]->flight_num << endl;
+        // cout << "c###### :" << flightOb[i].dep_datetime << endl;
+        // cout << "c###### :" << flightOb[i].dep_airport << endl;
+        // cout << "c###### :" << flightOb[i].arri_airport << endl;
+
         // while(statement[i]!=""){
         //     // split
         //     // int row=
@@ -74,10 +109,24 @@ int main()
         //     // 
         //     i++;
         // }
-        cout<< flightOb1.flight_num<<endl;
-        cout<< flightOb1.dep_datetime<<endl;
-        cout<< flightOb1.dep_airport<<endl;
-        cout<< flightOb1.arri_airport<<endl;
+        // cout<< flightOb[i].flight_num<<endl;
+        // cout<< flightOb[i].dep_datetime<<endl;
+        // cout<< flightOb[i].dep_airport<<endl;
+        // cout<< flightOb[i].arri_airport<<endl;
+        //cout << "c****** :" << flightOb[i].arri_airport << endl;
+        // j++;
+
+
+        while(statement[j]!=""){
+            // string str = statement[i]; 
+            // removeDupWord(str);
+            // int row=
+            // classs
+            // 
+            j++;
+        }
+
+       j++;
 
     }
    
