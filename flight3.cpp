@@ -5,6 +5,8 @@
 
 using namespace std;
 
+// void flightDetails();
+
 // int x;
 string word[100];
 string f_id;
@@ -27,32 +29,6 @@ class flight {
     }
 };
 
-
-// void splitString(string str) 
-// { 
-//     // Used to split string around spaces. 
-//     istringstream ss(str);
-
-//     int k=0; 
-  
-//     // Traverse through all words 
-//     do { 
-//         // Read a word 
-//         //string word; 
-//         ss >> word[k];
-
-//          // Print the read word 
-//         cout << word[k] << endl; 
-//         if(word[k]==""){
-//             k++;
-//             // cout<<"fffff"<<endl;
-//             break;
-//         }
-//         k++; 
-
-//         // While there is more to read 
-//     } while (ss); 
-// } 
 
 void flightDetails(){
 
@@ -126,19 +102,24 @@ void flightDetails(){
                 //string word; 
                 ss >> word[k];
 
+                // string num_of_seat = word[k];
+                // string flight_class = word[k+1];
+                // string num_of_seat = word[k+2];
+
                 // Print the read word 
-                cout << word[k] << "\t"; 
-                if(word[k]==""){
-                    k++;
-                    // cout<<"fffff"<<endl;
-                    break;
-                }
+                cout << word[k] << "\t";
+                // if(word[k]=="") {
+                //     k++;
+                //     // cout<<"fffff"<<endl;
+                //     break;
+                // }
                 k++; 
 
                 // While there is more to read 
             } while (ss); 
-            // classs
-            // 
+            
+            
+
             cout<<endl;
             j++;
         }
@@ -156,13 +137,17 @@ void searchFlight(){
     cout << "Enter flight number :";
     cin >> f_id;
     int i=0;
-    
+
     while(statement[i]!=f_id){
         i++;
     }
 
     if(statement[i] == f_id){
-        cout << statement[i] << endl;
+        //cout << statement[i] << endl;
+        cout <<"Flight Number :" << statement[i] << endl;
+        cout <<"Departure Date :" << statement[i+1] << endl;
+        cout <<"Departure Airport Code :" << statement[i+2] << endl;
+        cout << "Arrival Airport Code :" << statement[i+3] << endl;
     }
     
 }
