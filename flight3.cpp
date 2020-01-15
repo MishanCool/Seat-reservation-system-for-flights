@@ -7,6 +7,8 @@ using namespace std;
 
 // int x;
 string word[100];
+string f_id;
+string statement[100];
 
 class flight {
     public: 
@@ -55,7 +57,6 @@ class flight {
 void flightDetails(){
 
     ifstream inFile;
-    string statement[100];
      
 
     // open the file stream
@@ -151,6 +152,21 @@ void flightDetails(){
 
 }
 
+void searchFlight(){
+    cout << "Enter flight number :";
+    cin >> f_id;
+    int i=0;
+    
+    while(statement[i]!=f_id){
+        i++;
+    }
+
+    if(statement[i] == f_id){
+        cout << statement[i] << endl;
+    }
+    
+}
+
 
 int main()
 {
@@ -160,6 +176,7 @@ int main()
         int x;
 
         cout << "1. Flight details" << endl;
+        cout << "2. Choose Flight" << endl;
         cout << "4. Exit " << endl;
         cout << "Enter your option :"; 
         cin >> x;
@@ -167,8 +184,7 @@ int main()
         switch (x){
             case 1 : flightDetails();
                      break;
-            case 2 :
-                    cout << "Well done" << endl;
+            case 2 :searchFlight();
                     break;
             case 3 :
                     cout << "You passed" << endl;
