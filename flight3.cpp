@@ -154,7 +154,7 @@ void searchFlight(){
 
 
 int main()
-{
+{flightDetails();
     
     while(1){
 
