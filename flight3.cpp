@@ -11,28 +11,12 @@ using namespace std;
 string word[100];
 string f_id;
 string statement[100];
+int seat[60][6];
 
-class flight {
-    public: 
+int numberofplane=0;
 
-    string flight_num;
-    string dep_datetime;
-    string dep_airport;
-    string arri_airport;
-    
-    public:
-    flight(string a,string b,string c,string d){
-        flight_num=a;
-        dep_datetime=b;
-        dep_airport=c;
-        arri_airport=d;
-    }
-};
-
-
-void flightDetails(){
-
-    ifstream inFile;
+void fileHandleing() {
+        ifstream inFile;
      
 
     // open the file stream
@@ -46,7 +30,7 @@ void flightDetails(){
     }
 
     int count1=0;
-    int numberofplane=0;
+    // numberofplane=0;
     string line;
     
     while (getline(inFile, line))
@@ -54,15 +38,48 @@ void flightDetails(){
         // cout << line << endl;
 
         if(line==""){
-            numberofplane++;
+            numberofplane=numberofplane+1;
         }
         
         statement[count1]=line;
         count1++;
 
     }
+}
+//**********************************************************************
 
-    flight *flightOb[numberofplane];  // Object array
+class flight {
+    public: 
+
+    string flight_num;
+    string dep_datetime;
+    string dep_airport;
+    string arri_airport;
+    string seat_num;
+    string clz;
+
+    // seat[10][1]=0;
+    // seat[10][1]=1;
+    // seat[10][1]=2;
+    
+    public:
+    flight(string a,string b,string c,string d) {
+        flight_num=a;
+        dep_datetime=b;
+        dep_airport=c;
+        arri_airport=d;
+    }
+};
+//*****************************************************
+
+flight *flightOb[numberofplane];  // Object array
+
+//*****************************************************
+
+
+void flightDetails(){
+
+    
     int i=0;
     //cout << "count1 is :" << count1 << endl;
     
@@ -108,11 +125,7 @@ void flightDetails(){
 
                 // Print the read word 
                 cout << word[k] << "\t";
-                // if(word[k]=="") {
-                //     k++;
-                //     // cout<<"fffff"<<endl;
-                //     break;
-                // }
+                
                 k++; 
 
                 // While there is more to read 
@@ -154,7 +167,8 @@ void searchFlight(){
 
 
 int main()
-{flightDetails();
+{
+    flightDetails();
     
     while(1){
 
