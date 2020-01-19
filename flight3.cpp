@@ -15,6 +15,7 @@ int seat[60][6];
 
 int numberofplane=0;
 
+
 void fileHandleing() {
         ifstream inFile;
      
@@ -111,10 +112,10 @@ void flightDetails() {
         //flight flightOb1(fid, f_datetime, f_dep, f_arri);
         flightOb[i] =new  flight(fid, f_datetime, f_dep, f_arri);
 
-        cout <<"Flight Number :" << flightOb[i]->flight_num << endl;
-        cout <<"Departure Date :" << flightOb[i]->dep_datetime << endl;
-        cout <<"Departure Airport Code :" << flightOb[i]->dep_airport << endl;
-        cout << "Arrival Airport Code :" << flightOb[i]->arri_airport << endl;
+        // cout <<"Flight Number :" << flightOb[i]->flight_num << endl;
+        // cout <<"Departure Date :" << flightOb[i]->dep_datetime << endl;
+        // cout <<"Departure Airport Code :" << flightOb[i]->dep_airport << endl;
+        // cout << "Arrival Airport Code :" << flightOb[i]->arri_airport << endl;
 
         while(statement[j]!=""){
             string str = statement[j]; 
@@ -161,33 +162,39 @@ void flightDetails() {
 
                 strcpy(char_array, s.c_str()); // copying the contents of the string to char array
 
-                cout <<"Row number :" << seat_row << "\t";
-                cout <<"Seat claz :" << seat_clz << "\t";
-                cout <<"column :" << endl;
-                for (int i = 0; i < g; i++) {
-                    cout << char_array[i]; 
-                }    
-                cout << "\n" << endl;
+                // cout <<"Row number :" << seat_row << "\t";
+                // cout <<"Seat claz :" << seat_clz << "\t";
+                // cout <<"column :" << endl;
+                // for (int i = 0; i < g; i++) {
+                //     cout << char_array[i]; 
+                // }    
+                // cout << "\n" << endl;
+                int val=0;
+
+                if(seat_clz=="B") {
+                    val=1;
+                }
+                else if(seat_clz=="E") {
+                    val=2;
+                }
+                else{
+                    cout<<"Invalid class"<<endl;
+                }
         
-            //    for (int i = 0; i < g; i++) {
-            //         cout << char_array[i]; 
-            //     }   
+               for (int i = 0; i < g; i++) {
+                   if(char_array[i]=='A') {
+                       seat[seat_row-1][0]=val;
+                   }
+                   else if(char_array[i]=='B'){
+                       seat[seat_row-1][1]=val;
+                   }
+                     
+                }   
                 
 
-                
-
-                // for(i=0;i<60;i++) {
-
-                //     for(j=0;j<6;j++) {
-                //         seat[i][j] = 1;
-                //     }
-                // } 
                 z=z+3;
             }
 
-
-            
-            
 
             cout<<endl;
             j++;
@@ -198,6 +205,14 @@ void flightDetails() {
        cout << "*********************************************************" << endl; 
 
     }
+
+    for(i=0;i<60;i++) {
+
+        for(j=0;j<6;j++) {
+            cout<<"["<<i+1<<"] ->" <<seat[i][j] <<"\t";
+        }
+        cout<<endl;
+    } 
     
 
 }
@@ -224,8 +239,16 @@ void searchFlight(){
 
 int main()
 {
+    int i , j;
+    for(i=0;i<60;i++) {
+        for(j=0;j<6;j++) {
+            seat[i][j] =0;
+        }
+    } 
+
     fileHandleing();
     // flightDetails();
+
     
     while(1){
 
