@@ -5,7 +5,7 @@
 
 using namespace std;
 
-// void flightDetails();
+void flightDetails();
 
 // int x;
 string word[100];
@@ -45,6 +45,11 @@ void fileHandleing() {
         count1++;
 
     }
+
+    flightDetails();
+
+    // close the file stream
+    inFile.close();
 }
 //**********************************************************************
 
@@ -72,25 +77,31 @@ class flight {
 };
 //*****************************************************
 
-flight *flightOb[numberofplane];  // Object array
+//const int Num_flight= numberofplane;
+
 
 //*****************************************************
 
 
-void flightDetails(){
+void flightDetails() {
 
     
     int i=0;
     //cout << "count1 is :" << count1 << endl;
     
     //  flight flightOb1[numberofplane];
+    flight *flightOb[numberofplane];  // Object array
+
     int j=0;
-    for(int i = 0 ; i<numberofplane ; i++){
+    for(int i = 0 ; i<numberofplane ; i++) {
         //cout << "value :" << statement[i] << endl;
         string fid=statement[j];          //  flight number
         string f_datetime=statement[j+1]; //  departure date and time
         string f_dep=statement[j+2];      //  departure airport code
         string f_arri=statement[j+3];     //  arrival airport code
+        
+        string seat_colum;
+
         j=j+4;
         //cout << "c****** :" << fid << endl;
         // cout << "c****** :" << f_datetime << endl;
@@ -118,18 +129,63 @@ void flightDetails(){
                 // Read a word 
                 //string word; 
                 ss >> word[k];
+                
 
                 // string num_of_seat = word[k];
                 // string flight_class = word[k+1];
                 // string num_of_seat = word[k+2];
 
                 // Print the read word 
-                cout << word[k] << "\t";
+                //cout << word[k] << "\t";
                 
                 k++; 
 
                 // While there is more to read 
-            } while (ss); 
+            } while (ss);
+
+            int z=0;
+            
+            while(word[z]!="") {
+
+                int seat_row;
+                // int seat_row=stoi(word[z]);     this convert is support to c++11
+                stringstream row(word[z]);         // convert string to integer
+                row >> seat_row;
+
+                string seat_clz=word[z+1];
+                string s=word[z+2];
+
+                int g = s.length();
+
+                char char_array[g + 1];
+
+                strcpy(char_array, s.c_str()); // copying the contents of the string to char array
+
+                cout <<"Row number :" << seat_row << "\t";
+                cout <<"Seat claz :" << seat_clz << "\t";
+                cout <<"column :" << endl;
+                for (int i = 0; i < g; i++) {
+                    cout << char_array[i]; 
+                }    
+                cout << "\n" << endl;
+        
+            //    for (int i = 0; i < g; i++) {
+            //         cout << char_array[i]; 
+            //     }   
+                
+
+                
+
+                // for(i=0;i<60;i++) {
+
+                //     for(j=0;j<6;j++) {
+                //         seat[i][j] = 1;
+                //     }
+                // } 
+                z=z+3;
+            }
+
+
             
             
 
@@ -139,10 +195,10 @@ void flightDetails(){
     
        j++;
        cout<<"\n\n\n\n";
+       cout << "*********************************************************" << endl; 
 
     }
-    // close the file stream
-    inFile.close();
+    
 
 }
 
@@ -168,7 +224,8 @@ void searchFlight(){
 
 int main()
 {
-    flightDetails();
+    fileHandleing();
+    // flightDetails();
     
     while(1){
 
