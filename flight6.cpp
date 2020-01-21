@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include<string.h>
+#include <conio.h>
 #include <bits/stdc++.h> 
 
 using namespace std;
@@ -26,9 +27,9 @@ class flight {
     string arri_airport;
     int seat_num;
     string clz;
-    char seat_array[];
-    int seat_row_num[];
-    char seat_clz[];
+    char seat_array[100];
+    int seat_row_num[100];
+    char seat_clz[100];
     
     public:
     flight(string a,string b,string c,string d) {
@@ -38,14 +39,17 @@ class flight {
         arri_airport=d;
     }
 
-    public:int available_seat(int e, string f, char array[], int m ,int x){
+    public:int available_seat(int e, string f, string colum ,int x){
 
         //cout<<"***********clazz*********"<<endl;
 
 
-        for(int dl=0;dl<m;dl++){
-            seat_array[dl]=array[dl];
-        }
+        // for(int dl=0;dl<m;dl++){
+        //     seat_array[dl]=array[dl];
+        // }
+        int m=colum.length();
+        char seat_array[m+1];
+        strcpy(seat_array, colum.c_str()); // copying the contents of the string to char array
 
         for(int dl=0;dl<m;dl++){
             cout<<seat_array[dl];
@@ -61,8 +65,8 @@ class flight {
         //cout<<"class"<<f<<"num"<<x-1<<endl;
         clz=f;
         //cout<<"class"<<clz<<"num"<<x-1<<endl;
-        seat_clz[x-1];
-        strcpy(seat_clz, clz.c_str());
+        seat_clz[x-1] = clz[0];
+        //strcpy(seat_clz, clz.c_str());
         
 
         //cout<<"class"<<seat_clz[x-1]<<"num"<<x-1<<endl;
@@ -212,32 +216,33 @@ void flightDetails(flight *flightOb[]) {
 
                 string seat_clz=word[z+1];
 
-                string s=word[z+2];
+                 string s=word[z+2];
                 int g = s.length();
-                char char_array[g + 1];
-                strcpy(char_array, s.c_str()); // copying the contents of the string to char array
+                // char char_array[g + 1];
+                // strcpy(char_array, s.c_str()); // copying the contents of the string to char array
 
                 
                 
-                flightOb[i]->available_seat(seat_row, seat_clz, char_array , g , seat_count);
+                flightOb[i]->available_seat(seat_row, seat_clz, s , seat_count);
                 //flightOb[i] =new  flight(seat_row, seat_clz, char_array , g , seat_count);
                 //cout<<"***********Find Wrong*********"<<endl;
 
-                 cout <<"Row number :" << flightOb[i]->seat_num<< "\t";
-                cout <<"Seat claz :" << flightOb[i]->clz << "\t";
-                cout <<"column :";
-                for (int h = 0; h < g; h++) {
-                    cout << flightOb[i]->seat_array[h];
-                }    
-                cout << "\n" << endl;
+                // cout <<"Row number :" << flightOb[i]->seat_num<< "\t";
+                // cout <<"Seat claz :" << flightOb[i]->clz << "\t";
+                // cout <<"column :";
+                //     for (int h = 0; h < g+1; h++) {
+                //         cout << flightOb[i]->seat_array[h];
+                //     }    
+                // cout << "\n" << endl;
 
                 z=z+3;
             }
 
-            // for(int ij=0;ij<seat_count;ij++){
-            //     cout <<"Row number :" << flightOb[i]->seat_row_num[ij]<< "\t";
-            //     cout <<"Seat claz :" << flightOb[i]->seat_clz[ij] << "\t";
-            // }
+            for(int ij=0;ij<seat_count;ij++){
+                cout <<"Row number :" << flightOb[i]->seat_row_num[ij]<< "\t";
+                cout <<"Seat claz :" << flightOb[i]->seat_clz[ij] << "\t";
+            }
+            
 
 
             cout<<endl;
