@@ -12,7 +12,7 @@ using namespace std;
 string word[100];
 string f_id;
 string statement[100];
-int seat[60][6];
+
 
 int numberofplane=0;
 
@@ -30,6 +30,7 @@ class flight {
     char seat_array[100];
     int seat_row_num[100];
     char seat_clz[100];
+    int seat[60][6];
     
     public:
     flight(string a,string b,string c,string d) {
@@ -39,9 +40,15 @@ class flight {
         arri_airport=d;
     }
 
-    public:int available_seat(int e, string f, string colum ,int x){
+    public:int available_seat(int e, string f, string colum ,int x) {
 
         //cout<<"***********clazz*********"<<endl;
+        // int i , j;
+        // for(i=0;i<60;i++) {
+        //     for(j=0;j<6;j++) {
+        //         seat[i][j] =0;
+        //     }
+        // } 
 
 
         // for(int dl=0;dl<m;dl++){
@@ -66,11 +73,56 @@ class flight {
         clz=f;
         //cout<<"class"<<clz<<"num"<<x-1<<endl;
         seat_clz[x-1] = clz[0];
-        //strcpy(seat_clz, clz.c_str());
+
+        int val=0;
+
+        if(clz=="B") {
+            val=1;
+        }
+        else if(clz=="E") {
+            val=2;
+        }
+        else{
+            cout<<"Invalid class"<<endl;
+        }
+
+        for(int dl=0;dl<m;dl++){
+            //cout<<seat_array[dl];
+            
+            if(seat_array[dl]=='A') {
+                seat[seat_num-1][0]=val;
+            }
+            else if(seat_array[dl]=='B'){
+                seat[seat_num-1][1]=val;
+            }
+            else if(seat_array[dl]=='C'){
+                seat[seat_num-1][2]=val;
+            }
+            else if(seat_array[dl]=='D'){
+                seat[seat_num-1][3]=val;
+            }
+            else if(seat_array[dl]=='E'){
+                seat[seat_num-1][4]=val;
+            }
+            else if(seat_array[dl]=='F'){
+                seat[seat_num-1][5]=val;
+            }
+            else{
+                cout<<"Invalid colum"<<endl;
+            }
+    
+        }
+        
         
 
-        //cout<<"class"<<seat_clz[x-1]<<"num"<<x-1<<endl;
-    
+        // for(i=0;i<60;i++) {
+
+        //     for(j=0;j<6;j++) {
+        //         cout<<"["<<i+1<<"] ->" <<seat[i][j] <<"\t";
+        //     }
+        //     cout<<endl;
+        // }
+
     }
 
     //  public: int available_seat(int e, string f, char array[], int m ,int x){
@@ -242,12 +294,30 @@ void flightDetails(flight *flightOb[]) {
                 cout <<"Row number :" << flightOb[i]->seat_row_num[ij]<< "\t";
                 cout <<"Seat claz :" << flightOb[i]->seat_clz[ij] << "\t";
             }
+
+
+            // for(int kl=0;kl<60;kl++) {
+
+            //     for(int kj=0;kj<6;kj++) {
+            //         cout<<"["<<kl+1<<"] ->" <<flightOb[i]->seat[kl][kj] <<"\t";
+            //     }
+            //     cout<<endl;
+            // }
             
 
 
             cout<<endl;
             j++;
         }
+
+        for(int kl=0;kl<60;kl++) {
+
+            for(int kj=0;kj<6;kj++) {
+                cout<<"["<<kl+1<<"] ->" <<flightOb[i]->seat[kl][kj] <<"\t";
+            }
+            cout<<endl;
+        }
+
     
        j++;
        cout<<"\n\n\n\n";
@@ -308,12 +378,7 @@ void searchFlight(flight *object2[], int a){
 //*************************************************************************************
 int main()
 {
-    int i , j;
-    for(i=0;i<60;i++) {
-        for(j=0;j<6;j++) {
-            seat[i][j] =0;
-        }
-    } 
+    
     // flight *fli[100];
     flight *object[100];  // Object array
 
