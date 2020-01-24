@@ -47,9 +47,9 @@ class flight {
         char seat_array[m+1];
         strcpy(seat_array, colum.c_str()); // copying the contents of the string to char array
 
-        for(int dl=0;dl<m;dl++){
-            cout<<seat_array[dl];
-        }
+        // for(int dl=0;dl<m;dl++){
+        //     cout<<seat_array[dl];
+        // }
 
         seat_num=e;
         seat_row_num[x-1]=seat_num;
@@ -107,6 +107,13 @@ class flight {
         //     cout <<"Row number :" << seat_row_num[ij]<< "\t";
         //     cout <<"Seat claz :" << seat_clz[ij] << endl;
         // }
+        for(int w=0;w<60;w++) {
+
+            for(int u=0;u<6;u++) {
+                cout<<"["<<w+1<<"] ->" <<seat[w][u] <<"\t";
+            }
+            cout<<endl;
+        }
 
     }
 
@@ -214,27 +221,27 @@ void flightDetails(flight *flightOb[]) {
                 z=z+3;
             }
 
-            for(int ij=0;ij<seat_count;ij++){
-                cout <<"Row number :" << flightOb[i]->seat_row_num[ij]<< "\t";
-                cout <<"Seat claz :" << flightOb[i]->seat_clz[ij] << "\t";
-            }
+            // for(int ij=0;ij<seat_count;ij++){
+            //     cout <<"Row number :" << flightOb[i]->seat_row_num[ij]<< "\t";
+            //     cout <<"Seat claz :" << flightOb[i]->seat_clz[ij] << "\t";
+            // }
 
             cout<<endl;
             j++;
         }
 
-        for(int kl=0;kl<60;kl++) {
+        // for(int kl=0;kl<60;kl++) {
 
-            for(int kj=0;kj<6;kj++) {
-                cout<<"["<<kl+1<<"] ->" <<flightOb[i]->seat[kl][kj] <<"\t";
-            }
-            cout<<endl;
-        }
+        //     for(int kj=0;kj<6;kj++) {
+        //         cout<<"["<<kl+1<<"] ->" <<flightOb[i]->seat[kl][kj] <<"\t";
+        //     }
+        //     cout<<endl;
+        // }
 
     
        j++;
        cout<<"\n\n\n\n";
-       cout << "*********************************************************" << endl; 
+       //cout << "*********************************************************" << endl; 
 
     //    searchFlight(flightOb,numberofplane);
     //returnflightOb(i);
@@ -270,11 +277,21 @@ void searchFlight(flight *object2[], int a){
         cout <<"Departure Airport Code :" << object2[i]->dep_airport << endl;
         cout << "Arrival Airport Code :" << object2[i]->arri_airport << endl;
 
-        for(int ij=0;ij<object2[i]->m;ij++){
-            cout <<"Row number :" << object2[i]->seat_row_num[ij]<< "\t";
-            cout <<"Seat claz :" << object2[i]->seat_clz[ij] << "\t";
+        // for(int ij=0;ij<object2[i]->m;ij++){
+        //     cout <<"Row number :" << object2[i]->seat_row_num[ij]<< "\t";
+        //     cout <<"Seat claz :" << object2[i]->seat_clz[ij] << "\t";
+        // }
+        for(int w=0;w<60;w++) {
+
+            for(int u=0;u<6;u++) {
+                cout<<"["<<w+1<<"] ->" <<object2[i]->seat[w][u] <<"\t";
+            }
+            cout<<endl;
         }
 
+    }
+    else {
+        cout<<"Invalied  Flight Number"<<endl;
     }
     
 }
@@ -314,7 +331,7 @@ int main()
             case 4 :exit(-1);
                     break;
             default :
-                    cout << "Invalid grade" << endl;
+                    cout << "Invalid Option" << endl;
         }
     }
    
