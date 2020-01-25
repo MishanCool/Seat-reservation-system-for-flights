@@ -9,6 +9,7 @@ using namespace std;
 string word[100];
 string f_id;
 string statement[100];
+int seat;
 
 
 int numberofplane=0;
@@ -94,8 +95,8 @@ class flight {
         cout <<"Flight Number :" << flight_num << endl;
         cout <<"Departure Date :" << dep_datetime << endl;
         cout <<"Departure Airport Code :" << dep_airport << endl;
-        cout << "Arrival Airport Code :" << arri_airport << endl;
-
+        cout << "Arrival Airport Code :" << arri_airport << "\n\n";
+        cout<<"Seat Structure In Flight"<<endl;
         for(int w=0;w<60;w++) {
 
             for(int u=0;u<6;u++) {
@@ -206,11 +207,16 @@ void flightDetails(flight *flightOb[]) {
     
 }
 
+
 //****************************************************************************************************
 void searchFlight(flight *object2[], int a){
     cout << "Enter flight number :";
     cin >> f_id;
+    cout<<endl;
     int i=0;
+
+    int B=0;
+    int E=0;
 
     for(i=0;i<a;i++)
     {
@@ -224,8 +230,24 @@ void searchFlight(flight *object2[], int a){
         cout <<"Flight Number :" << object2[i]->flight_num << endl;
         cout <<"Departure Date :" << object2[i]->dep_datetime << endl;
         cout <<"Departure Airport Code :" << object2[i]->dep_airport << endl;
-        cout << "Arrival Airport Code :" << object2[i]->arri_airport << endl;
+        cout << "Arrival Airport Code :" << object2[i]->arri_airport << "\n\n";
 
+        for(int w=0;w<60;w++) {
+
+            for(int u=0;u<6;u++) {
+                if(object2[i]->seat[w][u]==1){
+                    B++;
+                }
+                else if(object2[i]->seat[w][u]==2) {
+                    E++;
+                }
+            }
+        }
+
+        cout<<"Number of available seats in B class: "<< B <<"\t\t";
+        cout<<"Number of available seats in E class: "<< E <<"\n\n";
+
+        cout<<"Seat Structure In Flight"<<endl;
         for(int w=0;w<60;w++) {
 
             for(int u=0;u<6;u++) {
@@ -238,8 +260,71 @@ void searchFlight(flight *object2[], int a){
     else {
         cout<<"Invalied  Flight Number"<<endl;
     }
-    
 }
+
+
+//*******************************************************************************************
+void findSeats(flight *object3[], int a){
+    cout << "Enter flight number :";
+    cin >> f_id;
+    cout<<endl;
+    cout << "Enter number of seats you need :";
+    cin >> seat;
+    cout<<endl;
+
+    int i=0;
+
+    int B=0;
+    int E=0;
+
+    for(i=0;i<a;i++)
+    {
+        if(object3[i]->flight_num==f_id){
+            break;
+        }
+    }
+  
+    if(object3[i]->flight_num == f_id){
+
+        for(int w=0;w<60;w++) {
+
+            for(int u=0;u<6;u++) {
+                if(object3[i]->seat[w][u]==1){
+                    B++;
+                }
+                else if(object3[i]->seat[w][u]==2) {
+                    E++;
+                }
+            }
+        }
+
+        if(B+E>seat){
+            cout <<"Flight Number :" << object3[i]->flight_num << endl;
+            cout <<"Departure Date :" << object3[i]->dep_datetime << endl;
+            cout <<"Departure Airport Code :" << object3[i]->dep_airport << endl;
+            cout << "Arrival Airport Code :" << object3[i]->arri_airport <<"\n\n";
+            cout<<"Available Seats :"<<B+E<<endl;
+            cout<<seat<<" Seats are available in flight number "<<f_id<<"\n\n";
+            cout<<"Seat Structure In Flight"<<endl;
+            for(int w=0;w<60;w++) {
+
+                for(int u=0;u<6;u++) {
+                    cout<<"["<<w+1<<"] ->" <<object3[i]->seat[w][u] <<"\t";
+                }
+                cout<<endl;
+            }
+        }
+        else{
+            cout<<"Available Seats :"<<B+E<<endl;
+            cout<<seat<<"Seats are not available in flight number "<<f_id<<"\n\n";
+        }
+
+    }
+    else {
+        cout<<"Invalied  Flight Number"<<endl;
+    }
+}
+
 
 //*******************************************************************************************
 int main()
@@ -255,16 +340,19 @@ int main()
 
         int x;
         cout<<"\n\n\n\n\n";
-        cout<<"****** WELLCOME TO  Virgin Airline ******"<<"\n\n";
+        cout<<"****** WELLCOME TO  Virgin Airline ***************"<<"\n\n";
         cout <<"## Gide Line ##"<<endl;
+        cout <<"Allready book seats  represant from Number 0"<<endl;
         cout <<"Available B class seats represant from Number 1"<<endl;
         cout <<"Available E class seats represant from Number 2"<<"\n\n";
-        cout << "1. Flight details" << endl;
+        cout << "1. All flights details" << endl;
         cout << "2. Choose Flight" << endl;
-        cout << "4. Exit " << endl;
-        cout<<"\n\n";
-        cout << "Enter your option :"; 
+        cout << "3. Find Seats" << endl;
+        cout << "4. Exit " <<"\n\n";
+        cout<<"**************************************************"<<"\n\n";
+        cout << "Enter your option : "; 
         cin >> x;
+        cout<<endl;
 
         switch (x){
             case 1 : for(i=0;i<numberofplane;i++){
@@ -274,8 +362,7 @@ int main()
                     break;
             case 2 :searchFlight(object,numberofplane);
                     break;
-            case 3 :
-                    cout << "You passed" << endl;
+            case 3 :findSeats(object,numberofplane);
                     break;
             case 4 :exit(-1);
                     break;
